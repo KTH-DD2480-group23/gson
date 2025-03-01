@@ -102,14 +102,11 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
       return Collections.singletonList(name);
     }
 
-    if (enableFlattening) {
-      String serializedName = annotation.value();
-      if (serializedName.contains(".")) {
+    String serializedName = annotation.value();
+    if (enableFlattening && serializedName.contains(".")) {
         return Collections.singletonList(serializedName);
-      }
     }
 
-    String serializedName = annotation.value();
     String[] alternates = annotation.alternate();
     if (alternates.length == 0) {
       return Collections.singletonList(serializedName);
@@ -263,15 +260,8 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
           // avoid direct recursion
           return;
         }
-        
-        if (enableFlattening && serializedName.contains(".")) {
-          // TODO
-          // TODO
-        }
-        else{
-          writer.name(serializedName);
-          writeTypeAdapter.write(writer, fieldValue);
-        }
+        writer.name(serializedName);
+        writeTypeAdapter.write(writer, fieldValue);
       }
 
       @Override
@@ -514,15 +504,24 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
         return;
       }
 
-      out.beginObject();
-      try {
-        for (BoundField boundField : fieldsData.serializedFields) {
-          boundField.write(out, value);
-        }
-      } catch (IllegalAccessException e) {
-        throw ReflectionHelper.createExceptionForUnexpectedIllegalAccess(e);
+
+      if(enableFlattening){
+        // TODO Write with Flattening
+        // TODO Write with Flattening
+        // Given: {"bird.color":"black", "bird.age":"1"}
+        // Create : {"bird":{"color":"black", "age":"1"}}
       }
-      out.endObject();
+      else{
+        out.beginObject();
+        try {
+          for (BoundField boundField : fieldsData.serializedFields) {
+            boundField.write(out, value);
+          }
+        } catch (IllegalAccessException e) {
+          throw ReflectionHelper.createExceptionForUnexpectedIllegalAccess(e);
+        }
+        out.endObject();
+      }
     }
 
     @Override
@@ -532,33 +531,36 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
         return null;
       }
 
-      A accumulator = createAccumulator();
-      Map<String, BoundField> deserializedFields = fieldsData.deserializedFields;
-
-      try {
-        in.beginObject();
-        while (in.hasNext()) {
-          String name = in.nextName();
-          BoundField field = deserializedFields.get(name);
-
-          if(enableFlattening && name.contains(".")){
-            // Handle flattened field
-            // TODO
-            // TODO
-          }
-          if (field == null) {
-            in.skipValue();
-          } else {
-            readField(accumulator, in, field);
-          }
-        }
-      } catch (IllegalStateException e) {
-        throw new JsonSyntaxException(e);
-      } catch (IllegalAccessException e) {
-        throw ReflectionHelper.createExceptionForUnexpectedIllegalAccess(e);
+      if (enableFlattening){
+        // TODO Read with Flattening
+        // TODO Read with Flattening
+        // Given : {"bird":{"color":"black", "age":"1"}}
+        // Create: {"bird.color":"black", "bird.age":"1"}
+        return null;
       }
-      in.endObject();
-      return finalize(accumulator);
+      else{
+        A accumulator = createAccumulator();
+        Map<String, BoundField> deserializedFields = fieldsData.deserializedFields;
+
+        try {
+          in.beginObject();
+          while (in.hasNext()) {
+            String name = in.nextName();
+            BoundField field = deserializedFields.get(name);
+            if (field == null) {
+              in.skipValue();
+            } else {
+              readField(accumulator, in, field);
+            }
+          }
+        } catch (IllegalStateException e) {
+          throw new JsonSyntaxException(e);
+        } catch (IllegalAccessException e) {
+          throw ReflectionHelper.createExceptionForUnexpectedIllegalAccess(e);
+        }
+        in.endObject();
+        return finalize(accumulator);
+      }
     }
 
     /** Create the Object that will be used to collect each field value */
