@@ -63,6 +63,7 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
   private final Excluder excluder;
   private final JsonAdapterAnnotationTypeAdapterFactory jsonAdapterFactory;
   private final List<ReflectionAccessFilter> reflectionFilters;
+  private final boolean enableFlattening;
 
   public ReflectiveTypeAdapterFactory(
       ConstructorConstructor constructorConstructor,
@@ -70,11 +71,22 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
       Excluder excluder,
       JsonAdapterAnnotationTypeAdapterFactory jsonAdapterFactory,
       List<ReflectionAccessFilter> reflectionFilters) {
-    this.constructorConstructor = constructorConstructor;
-    this.fieldNamingPolicy = fieldNamingPolicy;
-    this.excluder = excluder;
-    this.jsonAdapterFactory = jsonAdapterFactory;
-    this.reflectionFilters = reflectionFilters;
+  this(constructorConstructor, fieldNamingPolicy, excluder, jsonAdapterFactory, reflectionFilters, false);
+  }
+
+  public ReflectiveTypeAdapterFactory(
+    ConstructorConstructor constructorConstructor,
+    FieldNamingStrategy fieldNamingPolicy,
+    Excluder excluder,
+    JsonAdapterAnnotationTypeAdapterFactory jsonAdapterFactory,
+    List<ReflectionAccessFilter> reflectionFilters,
+    boolean enableFlattening) {
+  this.constructorConstructor = constructorConstructor;
+  this.fieldNamingPolicy = fieldNamingPolicy;
+  this.excluder = excluder;
+  this.jsonAdapterFactory = jsonAdapterFactory;
+  this.reflectionFilters = reflectionFilters;
+  this.enableFlattening = enableFlattening;
   }
 
   private boolean includeField(Field f, boolean serialize) {
@@ -88,6 +100,13 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
     if (annotation == null) {
       String name = fieldNamingPolicy.translateName(f);
       return Collections.singletonList(name);
+    }
+
+    if (enableFlattening) {
+      String serializedName = annotation.value();
+      if (serializedName.contains(".")) {
+        return Collections.singletonList(serializedName);
+      }
     }
 
     String serializedName = annotation.value();
@@ -109,6 +128,7 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
     if (!Object.class.isAssignableFrom(raw)) {
       return null; // it's a primitive!
     }
+
 
     // Don't allow using reflection on anonymous and local classes because synthetic fields for
     // captured enclosing values make this unreliable
@@ -243,8 +263,15 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
           // avoid direct recursion
           return;
         }
-        writer.name(serializedName);
-        writeTypeAdapter.write(writer, fieldValue);
+        
+        if (enableFlattening && serializedName.contains(".")) {
+          // TODO
+          // TODO
+        }
+        else{
+          writer.name(serializedName);
+          writeTypeAdapter.write(writer, fieldValue);
+        }
       }
 
       @Override
@@ -390,6 +417,8 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
         Type fieldType = $Gson$Types.resolve(type.getType(), raw, field.getGenericType());
         List<String> fieldNames = getFieldNames(field);
         String serializedName = fieldNames.get(0);
+
+
         BoundField boundField =
             createBoundField(
                 context,
@@ -471,9 +500,11 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
   // though it is internal)
   public abstract static class Adapter<T, A> extends TypeAdapter<T> {
     private final FieldsData fieldsData;
+    private final boolean enableFlattening;
 
-    Adapter(FieldsData fieldsData) {
+    Adapter(FieldsData fieldsData, boolean enableFlattening) {
       this.fieldsData = fieldsData;
+      this.enableFlattening = enableFlattening;
     }
 
     @Override
@@ -509,6 +540,12 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
         while (in.hasNext()) {
           String name = in.nextName();
           BoundField field = deserializedFields.get(name);
+
+          if(enableFlattening && name.contains(".")){
+            // Handle flattened field
+            // TODO
+            // TODO
+          }
           if (field == null) {
             in.skipValue();
           } else {
@@ -542,7 +579,7 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
     private final ObjectConstructor<T> constructor;
 
     FieldReflectionAdapter(ObjectConstructor<T> constructor, FieldsData fieldsData) {
-      super(fieldsData);
+      super(fieldsData, false);
       this.constructor = constructor;
     }
 
@@ -574,7 +611,7 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
     private final Map<String, Integer> componentIndices = new HashMap<>();
 
     RecordAdapter(Class<T> raw, FieldsData fieldsData, boolean blockInaccessible) {
-      super(fieldsData);
+      super(fieldsData, false);
       constructor = ReflectionHelper.getCanonicalRecordConstructor(raw);
 
       if (blockInaccessible) {
