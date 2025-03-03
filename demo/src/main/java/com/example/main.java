@@ -24,7 +24,7 @@ public class main {
 
         try {
             try {
-                badGson.fromJson(badJson, User.class);
+                goodGson.fromJson(badJson, User.class);
             } catch (JsonSyntaxException e) {
                 System.out.println("Bad deserializer caught JsonSyntaxException");
             }
