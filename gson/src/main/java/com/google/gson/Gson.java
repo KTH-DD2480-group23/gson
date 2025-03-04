@@ -282,6 +282,54 @@ public final class Gson {
         DEFAULT_FLATTENING); // !! Modified
   }
 
+  // Overloaded constructor (defaults enableFlattening to false)
+  Gson(
+      Excluder excluder,
+      FieldNamingStrategy fieldNamingStrategy,
+      Map<Type, InstanceCreator<?>> instanceCreators,
+      boolean serializeNulls,
+      boolean complexMapKeySerialization,
+      boolean generateNonExecutableGson,
+      boolean htmlSafe,
+      FormattingStyle formattingStyle,
+      Strictness strictness,
+      boolean serializeSpecialFloatingPointValues,
+      boolean useJdkUnsafe,
+      LongSerializationPolicy longSerializationPolicy,
+      String datePattern,
+      int dateStyle,
+      int timeStyle,
+      List<TypeAdapterFactory> builderFactories,
+      List<TypeAdapterFactory> builderHierarchyFactories,
+      List<TypeAdapterFactory> factoriesToBeAdded,
+      ToNumberStrategy objectToNumberStrategy,
+      ToNumberStrategy numberToNumberStrategy,
+      List<ReflectionAccessFilter> reflectionFilters) {
+    this(
+        excluder,
+        fieldNamingStrategy,
+        instanceCreators,
+        serializeNulls,
+        complexMapKeySerialization,
+        generateNonExecutableGson,
+        htmlSafe,
+        formattingStyle,
+        strictness,
+        serializeSpecialFloatingPointValues,
+        useJdkUnsafe,
+        longSerializationPolicy,
+        datePattern,
+        dateStyle,
+        timeStyle,
+        builderFactories,
+        builderHierarchyFactories,
+        factoriesToBeAdded,
+        objectToNumberStrategy,
+        numberToNumberStrategy,
+        reflectionFilters,
+        false);
+  }
+
   Gson(
       Excluder excluder,
       FieldNamingStrategy fieldNamingStrategy,
