@@ -1,0 +1,766 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] ------------------------------------------------------------------------
+[[1;34mINFO[m] Detecting the operating system and CPU architecture
+[[1;34mINFO[m] ------------------------------------------------------------------------
+[[1;34mINFO[m] os.detected.name: linux
+[[1;34mINFO[m] os.detected.arch: x86_64
+[[1;34mINFO[m] os.detected.bitness: 64
+[[1;34mINFO[m] os.detected.version: 5.15
+[[1;34mINFO[m] os.detected.version.major: 5
+[[1;34mINFO[m] os.detected.version.minor: 15
+[[1;34mINFO[m] os.detected.release: ubuntu
+[[1;34mINFO[m] os.detected.release.version: 22.04
+[[1;34mINFO[m] os.detected.release.like.ubuntu: true
+[[1;34mINFO[m] os.detected.release.like.debian: true
+[[1;34mINFO[m] os.detected.classifier: linux-x86_64
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1mReactor Build Order:[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Gson Parent                                                        [pom]
+[[1;34mINFO[m] Gson                                                               [jar]
+[[1;34mINFO[m] Test: Java Platform Module System (JPMS)                           [jar]
+[[1;34mINFO[m] Test: GraalVM Native Image                                         [jar]
+[[1;34mINFO[m] Test: Code shrinking (ProGuard / R8)                               [jar]
+[[1;34mINFO[m] Gson Extras                                                        [jar]
+[[1;34mINFO[m] Gson Metrics                                                       [jar]
+[[1;34mINFO[m] Gson Protobuf Support                                              [jar]
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------< [0;36mcom.google.code.gson:gson-parent[0;1m >------------------[m
+[[1;34mINFO[m] [1mBuilding Gson Parent 2.12.2-SNAPSHOT                               [1/8][m
+[[1;34mINFO[m] [1m--------------------------------[ pom ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mgson-parent[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/lovisasjoberg/skola/soffan/real_gson/gson/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.5.0:enforce[m [1m(enforce-versions)[m @ [36mgson-parent[0;1m ---[m
+[[1;34mINFO[m] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[[1;34mINFO[m] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspotless-maven-plugin:2.44.2:check[m [1m(default)[m @ [36mgson-parent[0;1m ---[m
+[[1;34mINFO[m] Index file does not exist. Fallback to an empty index
+[[1;34mINFO[m] Spotless.Format is keeping 15 files clean - 0 needs changes to be clean, 15 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-artifact-plugin:3.6.0:buildinfo[m [1m(default)[m @ [36mgson-parent[0;1m ---[m
+[[1;34mINFO[m] Skipping intermediate goal run, aggregate will be gson
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-install-plugin:3.1.3:install[m [1m(default-install)[m @ [36mgson-parent[0;1m ---[m
+[[1;34mINFO[m] Installing /home/lovisasjoberg/skola/soffan/real_gson/gson/pom.xml to /home/lovisasjoberg/.m2/repository/com/google/code/gson/gson-parent/2.12.2-SNAPSHOT/gson-parent-2.12.2-SNAPSHOT.pom
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m---------------------< [0;36mcom.google.code.gson:gson[0;1m >----------------------[m
+[[1;34mINFO[m] [1mBuilding Gson 2.12.2-SNAPSHOT                                      [2/8][m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.5.0:enforce[m [1m(enforce-versions)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mtemplating-maven-plugin:3.0.0:filter-sources[m [1m(filtering-java-templates)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Copying files with filtering to temporary directory.
+[[1;34mINFO[m] Copying 1 resource from src/main/java-templates to target/templates-tmp851802031
+[[1;34mINFO[m] Copied 1 files to output directory: /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/generated-sources/java-templates
+[[1;34mINFO[m] Source directory: /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/generated-sources/java-templates added.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Copying 1 resource from src/main/resources to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:compile[m [1m(default-compile)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged source code[m.
+[[1;34mINFO[m] Compiling 85 source files with javac [debug deprecation release 8] to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mbnd-maven-plugin:6.4.0:bnd-process[m [1m(default)[m @ [36mgson[0;1m ---[m
+[[1;33mWARNING[m] /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/pom.xml [0:0]: Export com.google.gson,  has 1,  private references [com.google.gson.internal]
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Copying 1 resource from src/test/resources to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:testCompile[m [1m(default-testCompile)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 122 source files with javac [debug deprecation release 17] to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mcopy-rename-maven-plugin:1.0.1:rename[m [1m(pre-obfuscate-class)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Renamed /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/test-classes/com/google/gson/functional/EnumWithObfuscatedTest.class to /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/test-classes-obfuscated-injar/com/google/gson/functional/EnumWithObfuscatedTest.class
+[[1;34mINFO[m] Renamed /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/test-classes/com/google/gson/functional/EnumWithObfuscatedTest$Gender.class to /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/test-classes-obfuscated-injar/com/google/gson/functional/EnumWithObfuscatedTest$Gender.class
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mproguard-maven-plugin:2.6.1:proguard[m [1m(obfuscate-test-class)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] execute ProGuard [-injars, '/home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/test-classes-obfuscated-injar'(!META-INF/maven/**,**/*.class), -libraryjars, '/home/lovisasjoberg/.m2/repository/com/google/errorprone/error_prone_annotations/2.36.0/error_prone_annotations-2.36.0.jar', -outjars, '/home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/test-classes-obfuscated-outjar', -include, '/home/lovisasjoberg/skola/soffan/real_gson/gson/gson/src/test/resources/testcases-proguard.conf', -libraryjars, '/home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/classes', -libraryjars, '/usr/lib/jvm/java-17-openjdk-amd64/jmods/java.base.jmod', -printmapping, '/home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/proguard_map.txt', -printseeds, '/home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/proguard_seed.txt']
+[[1;34mINFO[m] proguard jar: [/home/lovisasjoberg/.m2/repository/com/guardsquare/proguard-base/7.6.1/proguard-base-7.6.1.jar, /home/lovisasjoberg/.m2/repository/com/guardsquare/proguard-core/9.1.7/proguard-core-9.1.7.jar]
+ [proguard] ProGuard, version 7.6.1
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:copy-resources[m [1m(post-obfuscate-class)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Copying 2 resources from target/test-classes-obfuscated-outjar/com/google/gson/functional to target/test-classes/com/google/gson/functional
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.5.2:test[m [1m(default-test)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+OpenJDK 64-Bit Server VM warning: Ignoring option --illegal-access=deny; support was removed in 17.0
+[[1;34mINFO[m] Running com.google.gson.[1mJsonArrayTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m18[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.136 s -- in com.google.gson.[1mJsonArrayTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mGsonBuilderTest[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m20[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 0.129 s -- in com.google.gson.[1mGsonBuilderTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mVersionExclusionStrategyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in com.google.gson.[1mVersionExclusionStrategyTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mMixedStreamTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in com.google.gson.[1mMixedStreamTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mJsonArrayAsListTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s -- in com.google.gson.[1mJsonArrayAsListTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mJsonArrayAsListSuiteTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m404[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.977 s -- in com.google.gson.[1mJsonArrayAsListSuiteTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mJsonParserTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m14[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.050 s -- in com.google.gson.[1mJsonParserTest[m
+[[1;34mINFO[m] Running com.google.gson.reflect.[1mTypeTokenTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 s -- in com.google.gson.reflect.[1mTypeTokenTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mToNumberPolicyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.google.gson.[1mToNumberPolicyTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mJsonStreamParserTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.google.gson.[1mJsonStreamParserTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mLongSerializationPolicyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.[1mLongSerializationPolicyTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mJavaSerializationTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s -- in com.google.gson.[1mJavaSerializationTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mGsonTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in com.google.gson.[1mGsonTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mObjectTypeAdapterParameterizedTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.[1mObjectTypeAdapterParameterizedTest[m
+[[1;34mINFO[m] Running com.google.gson.stream.[1mJsonWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m55[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.google.gson.stream.[1mJsonWriterTest[m
+[[1;34mINFO[m] Running com.google.gson.stream.[1mJsonReaderPathTest[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m28[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 0.010 s -- in com.google.gson.stream.[1mJsonReaderPathTest[m
+[[1;34mINFO[m] Running com.google.gson.stream.[1mJsonReaderTest[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m150[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m3[m, Time elapsed: 0.088 s -- in com.google.gson.stream.[1mJsonReaderTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mJsonPrimitiveTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m30[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.google.gson.[1mJsonPrimitiveTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mJavaUtilConcurrentAtomicTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.google.gson.functional.[1mJavaUtilConcurrentAtomicTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mObjectTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m50[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s -- in com.google.gson.functional.[1mObjectTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mDelegateTypeAdapterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.functional.[1mDelegateTypeAdapterTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mPrimitiveTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m106[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s -- in com.google.gson.functional.[1mPrimitiveTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mParameterizedTypesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m18[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in com.google.gson.functional.[1mParameterizedTypesTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mFormattingStyleTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in com.google.gson.functional.[1mFormattingStyleTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mJsonParserTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.google.gson.functional.[1mJsonParserTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mTreeTypeAdaptersTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.functional.[1mTreeTypeAdaptersTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mMapAsArrayTypeAdapterTest[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m6[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 0.004 s -- in com.google.gson.functional.[1mMapAsArrayTypeAdapterTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mEscapingTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.functional.[1mEscapingTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mCircularReferenceTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.022 s -- in com.google.gson.functional.[1mCircularReferenceTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mArrayTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m28[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.google.gson.functional.[1mArrayTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mTypeHierarchyAdapterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.functional.[1mTypeHierarchyAdapterTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mInterfaceTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.functional.[1mInterfaceTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mReflectionAccessFilterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m15[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.google.gson.functional.[1mReflectionAccessFilterTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mInstanceCreatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.google.gson.functional.[1mInstanceCreatorTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mFieldNamingTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.functional.[1mFieldNamingTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mGsonVersionDiagnosticsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.functional.[1mGsonVersionDiagnosticsTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mReflectionAccessTest[m
+WARNING: A terminally deprecated method in java.lang.System has been called
+WARNING: System::setSecurityManager has been called by com.google.gson.functional.ReflectionAccessTest (file:/home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/test-classes/)
+WARNING: Please consider reporting this to the maintainers of com.google.gson.functional.ReflectionAccessTest
+WARNING: System::setSecurityManager will be removed in a future release
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s -- in com.google.gson.functional.[1mReflectionAccessTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mCustomDeserializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.google.gson.functional.[1mCustomDeserializerTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mNumberLimitsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s -- in com.google.gson.functional.[1mNumberLimitsTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mJavaUtilTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.google.gson.functional.[1mJavaUtilTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mTypeAdapterPrecedenceTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.google.gson.functional.[1mTypeAdapterPrecedenceTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mCollectionTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m29[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s -- in com.google.gson.functional.[1mCollectionTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mLeniencyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.functional.[1mLeniencyTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mExposeFieldsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.google.gson.functional.[1mExposeFieldsTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mPrettyPrintingTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.functional.[1mPrettyPrintingTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mJsonTreeTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.functional.[1mJsonTreeTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mReadersWritersTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.google.gson.functional.[1mReadersWritersTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mJsonAdapterSerializerDeserializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.google.gson.functional.[1mJsonAdapterSerializerDeserializerTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mFieldExclusionTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.functional.[1mFieldExclusionTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mNamingPolicyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m19[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.google.gson.functional.[1mNamingPolicyTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mNullObjectAndFieldTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.google.gson.functional.[1mNullObjectAndFieldTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mInternationalizationTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.functional.[1mInternationalizationTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mCustomSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.functional.[1mCustomSerializerTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mToNumberPolicyFunctionalTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.google.gson.functional.[1mToNumberPolicyFunctionalTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mMoreSpecificTypeSerializationTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.google.gson.functional.[1mMoreSpecificTypeSerializationTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mUncategorizedTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.google.gson.functional.[1mUncategorizedTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mStreamingTypeAdaptersTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m17[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in com.google.gson.functional.[1mStreamingTypeAdaptersTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mStringTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m18[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.functional.[1mStringTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mJsonAdapterAnnotationOnFieldsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m19[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s -- in com.google.gson.functional.[1mJsonAdapterAnnotationOnFieldsTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mTypeAdapterRuntimeTypeWrapperTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.functional.[1mTypeAdapterRuntimeTypeWrapperTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mSecurityTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.functional.[1mSecurityTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mTypeVariableTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.functional.[1mTypeVariableTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mCustomTypeAdaptersTest[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m21[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m2[m, Time elapsed: 0.009 s -- in com.google.gson.functional.[1mCustomTypeAdaptersTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mReusedTypeVariablesFullyResolveTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.functional.[1mReusedTypeVariablesFullyResolveTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mJsonAdapterAnnotationOnClassesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m20[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in com.google.gson.functional.[1mJsonAdapterAnnotationOnClassesTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mMapTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m48[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 s -- in com.google.gson.functional.[1mMapTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mInheritanceTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.google.gson.functional.[1mInheritanceTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mRuntimeTypeAdapterFactoryFunctionalTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.google.gson.functional.[1mRuntimeTypeAdapterFactoryFunctionalTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mExclusionStrategyFunctionalTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.google.gson.functional.[1mExclusionStrategyFunctionalTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mEnumTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.google.gson.functional.[1mEnumTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mJava17RecordTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m25[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.073 s -- in com.google.gson.functional.[1mJava17RecordTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mEnumWithObfuscatedTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.functional.[1mEnumWithObfuscatedTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mDefaultTypeAdaptersTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m60[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.185 s -- in com.google.gson.functional.[1mDefaultTypeAdaptersTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mConcurrencyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.google.gson.functional.[1mConcurrencyTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mPrintFormattingTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.functional.[1mPrintFormattingTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mSerializedNameTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.functional.[1mSerializedNameTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mRawSerializationTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.functional.[1mRawSerializationTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mVersioningTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.functional.[1mVersioningTest[m
+[[1;34mINFO[m] Running com.google.gson.functional.[1mPrimitiveCharacterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.functional.[1mPrimitiveCharacterTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mExposeAnnotationExclusionStrategyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.[1mExposeAnnotationExclusionStrategyTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mJsonObjectAsMapSuiteTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m903[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.419 s -- in com.google.gson.[1mJsonObjectAsMapSuiteTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mParameterizedTypeTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.[1mParameterizedTypeTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mJsonNullTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.[1mJsonNullTest[m
+[[1;34mINFO[m] Running com.google.gson.metrics.[1mPerformanceTest[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m12[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m11[m, Time elapsed: 0 s -- in com.google.gson.metrics.[1mPerformanceTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mFieldNamingPolicyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.[1mFieldNamingPolicyTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mObjectTypeAdapterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 s -- in com.google.gson.[1mObjectTypeAdapterTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mCommentsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.[1mCommentsTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mGenericArrayTypeTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.[1mGenericArrayTypeTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mDefaultMapJsonSerializerTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.[1mDefaultMapJsonSerializerTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mJsonObjectAsMapTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.google.gson.[1mJsonObjectAsMapTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mTypeAdapterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.[1mTypeAdapterTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mJsonParserParameterizedTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.[1mJsonParserParameterizedTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mOverrideCoreTypeAdaptersTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.[1mOverrideCoreTypeAdaptersTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mJsonObjectTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m18[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.[1mJsonObjectTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.sql.[1mSqlTypesSupportTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.internal.sql.[1mSqlTypesSupportTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.sql.[1mSqlTypesGsonTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.internal.sql.[1mSqlTypesGsonTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.[1mConstructorConstructorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.internal.[1mConstructorConstructorTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.[1mGsonTypesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.internal.[1mGsonTypesTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.[1mUnsafeAllocatorInstantiationTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.internal.[1mUnsafeAllocatorInstantiationTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.[1mJavaVersionTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.internal.[1mJavaVersionTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.reflect.[1mJava17ReflectionHelperTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.internal.reflect.[1mJava17ReflectionHelperTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.bind.util.[1mISO8601UtilsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.internal.bind.util.[1mISO8601UtilsTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.bind.[1mDefaultDateTypeAdapterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s -- in com.google.gson.internal.bind.[1mDefaultDateTypeAdapterTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.bind.[1mJsonTreeReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.internal.bind.[1mJsonTreeReaderTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.bind.[1mJsonTreeWriterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m22[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in com.google.gson.internal.bind.[1mJsonTreeWriterTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.bind.[1mRecursiveTypesResolveTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.internal.bind.[1mRecursiveTypesResolveTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.bind.[1mJava17ReflectiveTypeAdapterFactoryTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.internal.bind.[1mJava17ReflectiveTypeAdapterFactoryTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.bind.[1mJsonElementReaderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m18[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in com.google.gson.internal.bind.[1mJsonElementReaderTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.[1mLinkedTreeMapTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m16[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.google.gson.internal.[1mLinkedTreeMapTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.[1mStreamsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.internal.[1mStreamsTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.[1mLinkedTreeMapSuiteTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1850[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.440 s -- in com.google.gson.internal.[1mLinkedTreeMapSuiteTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.[1mGsonBuildConfigTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.internal.[1mGsonBuildConfigTest[m
+[[1;34mINFO[m] Running com.google.gson.internal.[1mLazilyParsedNumberTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.internal.[1mLazilyParsedNumberTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mInnerClassExclusionStrategyTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.[1mInnerClassExclusionStrategyTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mGsonTypeAdapterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.[1mGsonTypeAdapterTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mDefaultInetAddressTypeAdapterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.google.gson.[1mDefaultInetAddressTypeAdapterTest[m
+[[1;34mINFO[m] Running com.google.gson.[1mFieldAttributesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in com.google.gson.[1mFieldAttributesTest[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;33mWARNING[m] [1;33mTests run: 4540, Failures: 0, Errors: 0, Skipped: 19[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.4.2:jar[m [1m(default-jar)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Building jar: /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/gson-2.12.2-SNAPSHOT.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmoditect-maven-plugin:1.2.2.Final:add-module-info[m [1m(add-module-info)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-failsafe-plugin:3.5.2:integration-test[m [1m(default)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running com.google.gson.integration.[1mOSGiManifestIT[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.142 s -- in com.google.gson.integration.[1mOSGiManifestIT[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 4, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspotless-maven-plugin:2.44.2:check[m [1m(default)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Index file does not exist. Fallback to an empty index
+[[1;34mINFO[m] Spotless.Format is keeping 2 files clean - 0 needs changes to be clean, 2 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] Spotless.Java is keeping 206 files clean - 0 needs changes to be clean, 206 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-artifact-plugin:3.6.0:buildinfo[m [1m(default)[m @ [36mgson[0;1m ---[m
+[[1;33mWARNING[m] SCM source tag in buildinfo source.scm.tag=HEAD does not permit rebuilders reproducible source checkout
+[[1;34mINFO[m] Saved aggregate info on build to /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/gson-2.12.2-SNAPSHOT.buildinfo
+[[1;34mINFO[m] Aggregate buildinfo copied to /home/lovisasjoberg/skola/soffan/real_gson/gson/target/gson-parent-2.12.2-SNAPSHOT.buildinfo
+[[1;34mINFO[m] Attaching buildinfo
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-failsafe-plugin:3.5.2:verify[m [1m(default)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-install-plugin:3.1.3:install[m [1m(default-install)[m @ [36mgson[0;1m ---[m
+[[1;34mINFO[m] Installing /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/pom.xml to /home/lovisasjoberg/.m2/repository/com/google/code/gson/gson/2.12.2-SNAPSHOT/gson-2.12.2-SNAPSHOT.pom
+[[1;34mINFO[m] Installing /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/gson-2.12.2-SNAPSHOT.jar to /home/lovisasjoberg/.m2/repository/com/google/code/gson/gson/2.12.2-SNAPSHOT/gson-2.12.2-SNAPSHOT.jar
+[[1;34mINFO[m] Installing /home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/gson-2.12.2-SNAPSHOT.buildinfo to /home/lovisasjoberg/.m2/repository/com/google/code/gson/gson/2.12.2-SNAPSHOT/gson-2.12.2-SNAPSHOT.buildinfo
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-------------------< [0;36mcom.google.code.gson:test-jpms[0;1m >-------------------[m
+[[1;34mINFO[m] [1mBuilding Test: Java Platform Module System (JPMS) 2.12.2-SNAPSHOT  [3/8][m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mtest-jpms[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/lovisasjoberg/skola/soffan/real_gson/gson/test-jpms/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.5.0:enforce[m [1m(enforce-versions)[m @ [36mtest-jpms[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mtest-jpms[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/lovisasjoberg/skola/soffan/real_gson/gson/test-jpms/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:compile[m [1m(default-compile)[m @ [36mtest-jpms[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 1 source file with javac [debug deprecation release 11] to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mtest-jpms[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/lovisasjoberg/skola/soffan/real_gson/gson/test-jpms/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:testCompile[m [1m(default-testCompile)[m @ [36mtest-jpms[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 5 source files with javac [debug deprecation release 11 module-path] to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.5.2:test[m [1m(default-test)[m @ [36mtest-jpms[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running com.google.gson.jpms_test.[1mModuleTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.073 s -- in com.google.gson.jpms_test.[1mModuleTest[m
+[[1;34mINFO[m] Running com.google.gson.jpms_test.opened.[1mReflectionTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in com.google.gson.jpms_test.opened.[1mReflectionTest[m
+[[1;34mINFO[m] Running com.google.gson.jpms_test.[1mExportedPackagesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in com.google.gson.jpms_test.[1mExportedPackagesTest[m
+[[1;34mINFO[m] Running com.google.gson.jpms_test.[1mReflectionInaccessibleTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in com.google.gson.jpms_test.[1mReflectionInaccessibleTest[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 12, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.4.2:jar[m [1m(default-jar)[m @ [36mtest-jpms[0;1m ---[m
+[[1;34mINFO[m] Building jar: /home/lovisasjoberg/skola/soffan/real_gson/gson/test-jpms/target/test-jpms-2.12.2-SNAPSHOT.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspotless-maven-plugin:2.44.2:check[m [1m(default)[m @ [36mtest-jpms[0;1m ---[m
+[[1;34mINFO[m] Index file does not exist. Fallback to an empty index
+[[1;34mINFO[m] Spotless.Format is keeping 2 files clean - 0 needs changes to be clean, 2 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] Spotless.Java is keeping 6 files clean - 0 needs changes to be clean, 6 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-artifact-plugin:3.6.0:buildinfo[m [1m(default)[m @ [36mtest-jpms[0;1m ---[m
+[[1;34mINFO[m] Skipping goal because module skips install and/or deploy
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-install-plugin:3.1.3:install[m [1m(default-install)[m @ [36mtest-jpms[0;1m ---[m
+[[1;34mINFO[m] Skipping artifact installation
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------< [0;36mcom.google.code.gson:test-graal-native-image[0;1m >------------[m
+[[1;34mINFO[m] [1mBuilding Test: GraalVM Native Image 2.12.2-SNAPSHOT                [4/8][m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mtest-graal-native-image[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/lovisasjoberg/skola/soffan/real_gson/gson/test-graal-native-image/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.5.0:enforce[m [1m(enforce-versions)[m @ [36mtest-graal-native-image[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mtest-graal-native-image[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/lovisasjoberg/skola/soffan/real_gson/gson/test-graal-native-image/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:compile[m [1m(default-compile)[m @ [36mtest-graal-native-image[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mtest-graal-native-image[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] Copying 1 resource
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:testCompile[m [1m(default-testCompile)[m @ [36mtest-graal-native-image[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 2 source files with javac [debug deprecation release 17] to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.5.2:test[m [1m(default-test)[m @ [36mtest-graal-native-image[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running com.google.gson.native_test.[1mReflectionTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.212 s -- in com.google.gson.native_test.[1mReflectionTest[m
+[[1;34mINFO[m] Running com.google.gson.native_test.[1mJava17RecordReflectionTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 s -- in com.google.gson.native_test.[1mJava17RecordReflectionTest[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 20, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.4.2:jar[m [1m(default-jar)[m @ [36mtest-graal-native-image[0;1m ---[m
+[[1;34mINFO[m] Skipping packaging of the jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspotless-maven-plugin:2.44.2:check[m [1m(default)[m @ [36mtest-graal-native-image[0;1m ---[m
+[[1;34mINFO[m] Index file does not exist. Fallback to an empty index
+[[1;34mINFO[m] Spotless.Format is keeping 2 files clean - 0 needs changes to be clean, 2 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] Spotless.Java is keeping 1 files clean - 0 needs changes to be clean, 1 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-artifact-plugin:3.6.0:buildinfo[m [1m(default)[m @ [36mtest-graal-native-image[0;1m ---[m
+[[1;34mINFO[m] Skipping goal because module skips install and/or deploy
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-install-plugin:3.1.3:install[m [1m(default-install)[m @ [36mtest-graal-native-image[0;1m ---[m
+[[1;34mINFO[m] Skipping artifact installation
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-----------------< [0;36mcom.google.code.gson:test-shrinker[0;1m >-----------------[m
+[[1;34mINFO[m] [1mBuilding Test: Code shrinking (ProGuard / R8) 2.12.2-SNAPSHOT      [5/8][m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/lovisasjoberg/skola/soffan/real_gson/gson/test-shrinker/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.5.0:enforce[m [1m(enforce-versions)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[[1;34mINFO[m] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/lovisasjoberg/skola/soffan/real_gson/gson/test-shrinker/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:compile[m [1m(default-compile)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 17 source files with javac [debug deprecation release 8] to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/lovisasjoberg/skola/soffan/real_gson/gson/test-shrinker/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:testCompile[m [1m(default-testCompile)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 1 source file with javac [debug deprecation release 11] to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.5.2:test[m [1m(default-test)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.4.2:jar[m [1m(default-jar)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] Building jar: /home/lovisasjoberg/skola/soffan/real_gson/gson/test-shrinker/target/test-shrinker-2.12.2-SNAPSHOT.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mproguard-maven-plugin:2.6.1:proguard[m [1m(default)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] execute ProGuard [-injars, '/home/lovisasjoberg/skola/soffan/real_gson/gson/test-shrinker/target/test-shrinker-2.12.2-SNAPSHOT.jar'(!META-INF/maven/**), -injars, '/home/lovisasjoberg/skola/soffan/real_gson/gson/gson/target/classes', -injars, '/home/lovisasjoberg/.m2/repository/com/google/errorprone/error_prone_annotations/2.36.0/error_prone_annotations-2.36.0.jar', -outjars, '/home/lovisasjoberg/skola/soffan/real_gson/gson/test-shrinker/target/proguard-output.jar', -include, '/home/lovisasjoberg/skola/soffan/real_gson/gson/test-shrinker/proguard.pro', -libraryjars, '/usr/lib/jvm/java-17-openjdk-amd64/jmods/java.base.jmod', -libraryjars, '/usr/lib/jvm/java-17-openjdk-amd64/jmods/java.sql.jmod', -libraryjars, '/usr/lib/jvm/java-17-openjdk-amd64/jmods/java.compiler.jmod', -printmapping, '/home/lovisasjoberg/skola/soffan/real_gson/gson/test-shrinker/target/proguard_map.txt', -printseeds, '/home/lovisasjoberg/skola/soffan/real_gson/gson/test-shrinker/target/proguard_seed.txt', -include, /home/lovisasjoberg/skola/soffan/real_gson/gson/test-shrinker/../gson/src/main/resources/META-INF/proguard/gson.pro]
+[[1;34mINFO[m] proguard jar: [/home/lovisasjoberg/.m2/repository/com/guardsquare/proguard-base/7.6.1/proguard-base-7.6.1.jar, /home/lovisasjoberg/.m2/repository/com/guardsquare/proguard-core/9.1.7/proguard-core-9.1.7.jar]
+ [proguard] ProGuard, version 7.6.1
+ [proguard] Note: duplicate definition of resource file [META-INF/MANIFEST.MF]
+ [proguard] Note: duplicate definition of resource file [META-INF/MANIFEST.MF]
+ [proguard] Note: there were 2 duplicate class definitions.
+ [proguard]       (https://www.guardsquare.com/proguard/manual/troubleshooting#duplicateclass)
+ [proguard] Note: com.google.gson.internal.$Gson$Types calls 'Class.getDeclaringClass'
+ [proguard] Note: com.google.gson.internal.UnsafeAllocator: can't find dynamically referenced class sun.misc.Unsafe
+ [proguard] Note: com.google.gson.internal.UnsafeAllocator accesses a declared field 'theUnsafe' dynamically
+ [proguard] Note: com.google.gson.internal.UnsafeAllocator accesses a method 'allocateInstance(java.lang.Class)' dynamically
+ [proguard] Note: com.google.gson.internal.reflect.ReflectionHelper$RecordSupportedHelper accesses a method 'getType()' dynamically
+ [proguard] Warning: can't derive deserialized type from fromJson() invocation in com/example/Main.fromJson(Lcom/google/gson/Gson;Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+ [proguard] Warning: can't derive serialized type from toJson() invocation in com/example/Main.lambda$testTypeTokenWriteRead$2(Lcom/google/gson/Gson;Ljava/util/function/Supplier;)Ljava/lang/String;
+ [proguard] Warning: can't derive deserialized type from fromJson() invocation in com/example/NoSerializedNameMain.runTestNoArgsConstructor()Ljava/lang/String;
+ [proguard] Warning: can't derive deserialized type from fromJson() invocation in com/example/NoSerializedNameMain.runTestNoJdkUnsafe()Ljava/lang/String;
+ [proguard] Warning: can't derive deserialized type from fromJson() invocation in com/example/NoSerializedNameMain.runTestHasArgsConstructor()Ljava/lang/String;
+ [proguard] Warning: can't write resource [META-INF/MANIFEST.MF] (Duplicate jar entry [META-INF/MANIFEST.MF])
+ [proguard] Warning: can't write resource [META-INF/MANIFEST.MF] (Duplicate jar entry [META-INF/MANIFEST.MF])
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-shade-plugin:3.6.0:shade[m [1m(default)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] Including com.google.code.gson:gson:jar:2.12.2-SNAPSHOT in the shaded jar.
+[[1;34mINFO[m] Including com.google.errorprone:error_prone_annotations:jar:2.36.0 in the shaded jar.
+[[1;34mINFO[m] Replacing original artifact with shaded artifact.
+[[1;34mINFO[m] Replacing /home/lovisasjoberg/skola/soffan/real_gson/gson/test-shrinker/target/test-shrinker-2.12.2-SNAPSHOT.jar with /home/lovisasjoberg/skola/soffan/real_gson/gson/test-shrinker/target/test-shrinker-2.12.2-SNAPSHOT-shaded.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mexec-maven-plugin:3.5.0:java[m [1m(r8)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-failsafe-plugin:3.5.2:integration-test[m [1m(default)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running com.google.gson.it.[1mShrinkingIT[m
+[[1;33mWARNING[m] [1;33mTests [0;1mrun: [0;1m10[m, Failures: 0, Errors: 0, [1;33mSkipped: [0;1;33m1[m, Time elapsed: 0.379 s -- in com.google.gson.it.[1mShrinkingIT[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;33mWARNING[m] [1;33mTests run: 10, Failures: 0, Errors: 0, Skipped: 1[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspotless-maven-plugin:2.44.2:check[m [1m(default)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] Index file does not exist. Fallback to an empty index
+[[1;34mINFO[m] Spotless.Format is keeping 2 files clean - 0 needs changes to be clean, 2 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] Spotless.Java is keeping 18 files clean - 0 needs changes to be clean, 18 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-artifact-plugin:3.6.0:buildinfo[m [1m(default)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] Skipping goal because module skips install and/or deploy
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-failsafe-plugin:3.5.2:verify[m [1m(default)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-install-plugin:3.1.3:install[m [1m(default-install)[m @ [36mtest-shrinker[0;1m ---[m
+[[1;34mINFO[m] Skipping artifact installation
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------< [0;36mcom.google.code.gson:gson-extras[0;1m >------------------[m
+[[1;34mINFO[m] [1mBuilding Gson Extras 2.12.2-SNAPSHOT                               [6/8][m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mgson-extras[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/lovisasjoberg/skola/soffan/real_gson/gson/extras/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.5.0:enforce[m [1m(enforce-versions)[m @ [36mgson-extras[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mgson-extras[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/lovisasjoberg/skola/soffan/real_gson/gson/extras/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:compile[m [1m(default-compile)[m @ [36mgson-extras[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 8 source files with javac [debug deprecation release 8] to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mgson-extras[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/lovisasjoberg/skola/soffan/real_gson/gson/extras/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:testCompile[m [1m(default-testCompile)[m @ [36mgson-extras[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 5 source files with javac [debug deprecation release 11] to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.5.2:test[m [1m(default-test)[m @ [36mgson-extras[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running com.google.gson.typeadapters.[1mUtcDateTypeAdapterTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.309 s -- in com.google.gson.typeadapters.[1mUtcDateTypeAdapterTest[m
+[[1;34mINFO[m] Running com.google.gson.typeadapters.[1mPostConstructAdapterFactoryTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in com.google.gson.typeadapters.[1mPostConstructAdapterFactoryTest[m
+[[1;34mINFO[m] Running com.google.gson.typeadapters.[1mRuntimeTypeAdapterFactoryTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m14[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.055 s -- in com.google.gson.typeadapters.[1mRuntimeTypeAdapterFactoryTest[m
+[[1;34mINFO[m] Running com.google.gson.interceptors.[1mInterceptorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in com.google.gson.interceptors.[1mInterceptorTest[m
+[[1;34mINFO[m] Running com.google.gson.graph.[1mGraphAdapterBuilderTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 s -- in com.google.gson.graph.[1mGraphAdapterBuilderTest[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 40, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.4.2:jar[m [1m(default-jar)[m @ [36mgson-extras[0;1m ---[m
+[[1;34mINFO[m] Building jar: /home/lovisasjoberg/skola/soffan/real_gson/gson/extras/target/gson-extras-2.12.2-SNAPSHOT.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspotless-maven-plugin:2.44.2:check[m [1m(default)[m @ [36mgson-extras[0;1m ---[m
+[[1;34mINFO[m] Index file does not exist. Fallback to an empty index
+[[1;34mINFO[m] Spotless.Format is keeping 2 files clean - 0 needs changes to be clean, 2 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] Spotless.Java is keeping 13 files clean - 0 needs changes to be clean, 13 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-artifact-plugin:3.6.0:buildinfo[m [1m(default)[m @ [36mgson-extras[0;1m ---[m
+[[1;34mINFO[m] Skipping goal because module skips install and/or deploy
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-install-plugin:3.1.3:install[m [1m(default-install)[m @ [36mgson-extras[0;1m ---[m
+[[1;34mINFO[m] Installing /home/lovisasjoberg/skola/soffan/real_gson/gson/extras/pom.xml to /home/lovisasjoberg/.m2/repository/com/google/code/gson/gson-extras/2.12.2-SNAPSHOT/gson-extras-2.12.2-SNAPSHOT.pom
+[[1;34mINFO[m] Installing /home/lovisasjoberg/skola/soffan/real_gson/gson/extras/target/gson-extras-2.12.2-SNAPSHOT.jar to /home/lovisasjoberg/.m2/repository/com/google/code/gson/gson-extras/2.12.2-SNAPSHOT/gson-extras-2.12.2-SNAPSHOT.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-----------------< [0;36mcom.google.code.gson:gson-metrics[0;1m >------------------[m
+[[1;34mINFO[m] [1mBuilding Gson Metrics 2.12.2-SNAPSHOT                              [7/8][m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mgson-metrics[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/lovisasjoberg/skola/soffan/real_gson/gson/metrics/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.5.0:enforce[m [1m(enforce-versions)[m @ [36mgson-metrics[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mgson-metrics[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] Copying 1 resource
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:compile[m [1m(default-compile)[m @ [36mgson-metrics[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 6 source files with javac [debug deprecation release 8] to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mgson-metrics[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/lovisasjoberg/skola/soffan/real_gson/gson/metrics/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:testCompile[m [1m(default-testCompile)[m @ [36mgson-metrics[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.5.2:test[m [1m(default-test)[m @ [36mgson-metrics[0;1m ---[m
+[[1;34mINFO[m] No tests to run.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.4.2:jar[m [1m(default-jar)[m @ [36mgson-metrics[0;1m ---[m
+[[1;34mINFO[m] Building jar: /home/lovisasjoberg/skola/soffan/real_gson/gson/metrics/target/gson-metrics-2.12.2-SNAPSHOT.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspotless-maven-plugin:2.44.2:check[m [1m(default)[m @ [36mgson-metrics[0;1m ---[m
+[[1;34mINFO[m] Index file does not exist. Fallback to an empty index
+[[1;34mINFO[m] Spotless.Format is keeping 2 files clean - 0 needs changes to be clean, 2 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] Spotless.Java is keeping 6 files clean - 0 needs changes to be clean, 6 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-artifact-plugin:3.6.0:buildinfo[m [1m(default)[m @ [36mgson-metrics[0;1m ---[m
+[[1;34mINFO[m] Skipping goal because module skips install and/or deploy
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-install-plugin:3.1.3:install[m [1m(default-install)[m @ [36mgson-metrics[0;1m ---[m
+[[1;34mINFO[m] Skipping artifact installation
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m---------------------< [0;36mcom.google.code.gson:proto[0;1m >---------------------[m
+[[1;34mINFO[m] [1mBuilding Gson Protobuf Support 2.12.2-SNAPSHOT                     [8/8][m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mproto[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/lovisasjoberg/skola/soffan/real_gson/gson/proto/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.5.0:enforce[m [1m(enforce-versions)[m @ [36mproto[0;1m ---[m
+[[1;34mINFO[m] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[[1;34mINFO[m] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mproto[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/lovisasjoberg/skola/soffan/real_gson/gson/proto/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:compile[m [1m(default-compile)[m @ [36mproto[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 1 source file with javac [debug deprecation release 8] to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mprotobuf-maven-plugin:0.6.1:test-compile[m [1m(default)[m @ [36mproto[0;1m ---[m
+[[1;34mINFO[m] Compiling 2 proto file(s) to /home/lovisasjoberg/skola/soffan/real_gson/gson/proto/target/generated-test-sources/protobuf/java
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mproto[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/lovisasjoberg/skola/soffan/real_gson/gson/proto/src/test/resources
+[[1;34mINFO[m] Copying 2 resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:testCompile[m [1m(default-testCompile)[m @ [36mproto[0;1m ---[m
+[[1;34mINFO[m] Recompiling the module because of [1mchanged dependency[m.
+[[1;34mINFO[m] Compiling 6 source files with javac [debug deprecation release 11] to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.5.2:test[m [1m(default-test)[m @ [36mproto[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running com.google.gson.protobuf.functional.[1mProtosWithPrimitiveTypesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.238 s -- in com.google.gson.protobuf.functional.[1mProtosWithPrimitiveTypesTest[m
+[[1;34mINFO[m] Running com.google.gson.protobuf.functional.[1mProtosWithComplexAndRepeatedFieldsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.google.gson.protobuf.functional.[1mProtosWithComplexAndRepeatedFieldsTest[m
+[[1;34mINFO[m] Running com.google.gson.protobuf.functional.[1mProtosWithAnnotationsAndJsonNamesTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s -- in com.google.gson.protobuf.functional.[1mProtosWithAnnotationsAndJsonNamesTest[m
+[[1;34mINFO[m] Running com.google.gson.protobuf.functional.[1mProtosWithAnnotationsTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s -- in com.google.gson.protobuf.functional.[1mProtosWithAnnotationsTest[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 21, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.4.2:jar[m [1m(default-jar)[m @ [36mproto[0;1m ---[m
+[[1;34mINFO[m] Building jar: /home/lovisasjoberg/skola/soffan/real_gson/gson/proto/target/gson-proto.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspotless-maven-plugin:2.44.2:check[m [1m(default)[m @ [36mproto[0;1m ---[m
+[[1;34mINFO[m] Index file does not exist. Fallback to an empty index
+[[1;34mINFO[m] Spotless.Format is keeping 3 files clean - 0 needs changes to be clean, 3 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] Spotless.Java is keeping 5 files clean - 0 needs changes to be clean, 5 were already clean, 0 were skipped because caching determined they were already clean
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-artifact-plugin:3.6.0:buildinfo[m [1m(default)[m @ [36mproto[0;1m ---[m
+[[1;34mINFO[m] Skipping goal because module skips install and/or deploy
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-install-plugin:3.1.3:install[m [1m(default-install)[m @ [36mproto[0;1m ---[m
+[[1;34mINFO[m] Installing /home/lovisasjoberg/skola/soffan/real_gson/gson/proto/pom.xml to /home/lovisasjoberg/.m2/repository/com/google/code/gson/proto/2.12.2-SNAPSHOT/proto-2.12.2-SNAPSHOT.pom
+[[1;34mINFO[m] Installing /home/lovisasjoberg/skola/soffan/real_gson/gson/proto/target/gson-proto.jar to /home/lovisasjoberg/.m2/repository/com/google/code/gson/proto/2.12.2-SNAPSHOT/proto-2.12.2-SNAPSHOT.jar
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1mReactor Summary for Gson Parent 2.12.2-SNAPSHOT:[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Gson Parent ........................................ [1;32mSUCCESS[m [  7.843 s]
+[[1;34mINFO[m] Gson ............................................... [1;32mSUCCESS[m [ 55.243 s]
+[[1;34mINFO[m] Test: Java Platform Module System (JPMS) ........... [1;32mSUCCESS[m [  2.736 s]
+[[1;34mINFO[m] Test: GraalVM Native Image ......................... [1;32mSUCCESS[m [  2.310 s]
+[[1;34mINFO[m] Test: Code shrinking (ProGuard / R8) ............... [1;32mSUCCESS[m [ 22.064 s]
+[[1;34mINFO[m] Gson Extras ........................................ [1;32mSUCCESS[m [  4.862 s]
+[[1;34mINFO[m] Gson Metrics ....................................... [1;32mSUCCESS[m [  2.031 s]
+[[1;34mINFO[m] Gson Protobuf Support .............................. [1;32mSUCCESS[m [  5.357 s]
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  01:42 min
+[[1;34mINFO[m] Finished at: 2025-03-05T11:55:05+01:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
