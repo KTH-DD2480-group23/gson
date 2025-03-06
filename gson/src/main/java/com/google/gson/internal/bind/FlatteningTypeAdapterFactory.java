@@ -12,6 +12,25 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * The purpose of this file is to implement a solution to the issue:
+ * https://github.com/google/gson/issues/2555, raised by the user "mpsingh47". Mpsingh47 Wanted to
+ * be able to deserialize a JSON object into a flat model class without using a nested class
+ * structure. Mpsingh47 requested that there should be a feature making it possible to write
+ * "@serialized(address.street)", allowing the nested street value from the address to be directly
+ * mapped to a field in the model. This would make it such that one does not have to create a nested
+ * class to parse JSON into an object.
+ *
+ * <p>Under this issue, user "Marcono1234" responded with a proof of concept; however, he did not
+ * implement such a feature into the gson package. This file is therefore an implementation of user
+ * Marcono1234 proof of concept, accompanied by a new corresponding test file. Ensuring this file
+ * works correctly.
+ */
+
+/**
+ * Type adapter that flattens nested JSON objects during deserialization, and expends them back to
+ * their orginal format during serialization.
+ */
 public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
   // Called by Gson
   public FlatteningTypeAdapterFactory() {}
@@ -92,7 +111,7 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
           //   flattened.add(name, value);
         }
 
-        System.out.println("flattened " + flattened);
+        // System.out.println("flattened " + flattened);
         // Now read the flattened JsonObject using the delegate adapter
         return delegateAdapter.fromJsonTree(flattened);
       }
