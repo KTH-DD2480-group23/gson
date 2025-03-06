@@ -18,6 +18,15 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
 
   @Override
   public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+    Class<? super T> raw = type.getRawType();
+    if (raw.isPrimitive()
+        || String.class.equals(raw)
+        || Number.class.isAssignableFrom(raw)
+        || Boolean.class.equals(raw)
+        || Character.class.equals(raw)) {
+      return null;
+    }
+
     TypeAdapter<JsonObject> jsonObjectAdapter = gson.getAdapter(JsonObject.class);
     TypeAdapter<T> delegateAdapter = gson.getDelegateAdapter(this, type);
 
@@ -82,10 +91,8 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
           //   }
           //   flattened.add(name, value);
         }
-        if (flattened != null) {
-          throw new IllegalArgumentException("flattened " + flattened);
-        }
 
+        System.out.println("flattened " + flattened);
         // Now read the flattened JsonObject using the delegate adapter
         return delegateAdapter.fromJsonTree(flattened);
       }
