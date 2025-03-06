@@ -154,7 +154,7 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
           JsonElement entryValue = entry.getValue();
 
           // This basically works like a linked list of linked lists, where our root node / dummy
-          // node is expanded and we create a
+          // node is expanded and we create are
           JsonObject destination = expanded;
           while (true) {
             int separatorIndex = name.indexOf(separator);
@@ -166,7 +166,7 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
               String nameSuffix = name.substring(separatorIndex + 1);
 
               JsonObject nestedObject;
-              if (destination.has(namePrefix)) {
+              if (destination.has(namePrefix) && destination.get(namePrefix).isJsonObject()) {
                 nestedObject = destination.getAsJsonObject(namePrefix);
               } else {
                 nestedObject = new JsonObject();
