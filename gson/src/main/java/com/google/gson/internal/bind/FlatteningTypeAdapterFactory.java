@@ -55,10 +55,15 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
       private void flattenInto(String name, JsonObject toFlatten, JsonObject destination) {
         for (Map.Entry<String, JsonElement> entry : toFlatten.entrySet()) {
           String flattenedName = name + separator + entry.getKey();
-          if (destination.has(flattenedName)) {
-            throw new IllegalArgumentException("Duplicate name: " + flattenedName);
+          //  Nested structure
+          if (entry.getValue().isJsonObject()) {
+            flattenInto(flattenedName, entry.getValue().getAsJsonObject(), destination);
+          } else {
+            if (destination.has(flattenedName)) {
+              throw new IllegalArgumentException("Duplicate name: " + flattenedName);
+            }
+            destination.add(flattenedName, entry.getValue());
           }
-          destination.add(flattenedName, entry.getValue());
         }
       }
 
@@ -142,32 +147,35 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
 
         JsonObject flattened = (JsonObject) delegateAdapter.toJsonTree(value);
         JsonObject expanded = new JsonObject();
-        Map<String, JsonElement> expandedAsMap = expanded.asMap();
+        // Map<String, JsonElement> expandedAsMap = expanded.asMap();
 
         for (Map.Entry<String, JsonElement> entry : flattened.entrySet()) {
           String name = entry.getKey();
           JsonElement entryValue = entry.getValue();
 
-          // Expand the flattened entry
-          int separatorIndex = name.indexOf(separator);
-          if (separatorIndex != -1) {
-            String namePrefix = name.substring(0, separatorIndex);
-            String nameSuffix = name.substring(separatorIndex + 1);
-            JsonObject nestedObject =
-                (JsonObject) expandedAsMap.computeIfAbsent(namePrefix, k -> new JsonObject());
+          // This basically works like a linked list, where our root node / dummy node is expanded, and we create 
+          JsonObject destination = expanded;
+          while (true) {
+            int separatorIndex = name.indexOf(separator);
+            if (separatorIndex == -1) {
+              destination.add(name, entryValue);
+              break;
+            } else {
+              String namePrefix = name.substring(0, separatorIndex);
+              String nameSuffix = name.substring(separatorIndex + 1);
 
-            if (nestedObject.has(nameSuffix)) {
-              throw new IllegalArgumentException("Duplicate name: " + nameSuffix);
+              JsonObject nestedObject;
+              if (destination.has(namePrefix) && destination.get(namePrefix).isJsonObject()) {
+                nestedObject = destination.getAsJsonObject(namePrefix);
+              } else {
+                nestedObject = new JsonObject();
+                destination.add(namePrefix, nestedObject);
+              }
+              destination = nestedObject;
+              name = nameSuffix;
             }
-            nestedObject.add(nameSuffix, entryValue);
-          } else {
-            if (expanded.has(name)) {
-              throw new IllegalArgumentException("Duplicate name: " + name);
-            }
-            expanded.add(name, entryValue);
           }
         }
-
         // Finally write the expanded JsonObject to the actual writer
         jsonObjectAdapter.write(out, expanded);
       }
