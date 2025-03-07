@@ -66,10 +66,11 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
        * @param toFlatten : the JSON object that contains all the parent keys children.
        * @param destination : The target JSON object where all flattend keys will be stored into.
        */
-      private void flattenInto(String name, JsonObject toFlatten, JsonObject destination, boolean isInitial) {
+      private void flattenInto(
+          String name, JsonObject toFlatten, JsonObject destination, boolean isInitial) {
         for (Map.Entry<String, JsonElement> entry : toFlatten.entrySet()) {
           String entrykey = entry.getKey();
-          if(entrykey.contains(String.valueOf(separator))) {
+          if (entrykey.contains(String.valueOf(separator))) {
             throw new IllegalArgumentException("Unsupported entry key: " + entrykey);
           }
           String flattenedName = name + separator + entrykey;
