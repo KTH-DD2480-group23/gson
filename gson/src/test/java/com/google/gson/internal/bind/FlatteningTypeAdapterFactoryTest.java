@@ -3,29 +3,17 @@ package com.google.gson.internal.bind;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-//import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
-//import com.google.gson.reflect.TypeToken;
-//import com.google.gson.stream.JsonReader;
-// import com.google.gson.stream.JsonWriter;
+
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Before;
-
-// import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
-//import java.io.IOException;
-//import java.io.StringReader;
-// import java.io.StringWriter;
-// import java.util.LinkedHashMap;
-// import java.util.Map;
-
 public class FlatteningTypeAdapterFactoryTest {
     
-    class FlatModel1 {
+    static class FlatModel1 {
         @SerializedName("a.b")
         public int aB;
         
@@ -74,7 +62,7 @@ public class FlatteningTypeAdapterFactoryTest {
             gson.fromJson(json, FlatModel1.class);
         });
     }
-    class FlatModel2 {
+    static class FlatModel2 {
         @SerializedName("a.1.@")
         public double a1;
         
