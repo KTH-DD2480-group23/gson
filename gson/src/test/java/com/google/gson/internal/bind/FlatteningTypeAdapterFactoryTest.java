@@ -21,16 +21,16 @@ public class FlatteningTypeAdapterFactoryTest {
   }
 
   @Test
-  public void testFlatteningtoModelClass() {
+  public void testFlatteningtoModelClass() { 
 
     FlatteningTypeAdapterFactory factory = new FlatteningTypeAdapterFactory();
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();
 
     String json = "{\"a\": {\"b\": 1, \"c\": true}}";
-    FlatModel1 result = gson.fromJson(json, FlatModel1.class);
+    FlatModel1 result = gson.fromJson(json, FlatModel1.class); //Requirement: 1 
 
     // Check the flattened fields
-    assertEquals(1, result.aB);
+    assertEquals(1, result.aB); //Requirement: 2
     assertTrue(result.aC);
   }
 
@@ -40,7 +40,7 @@ public class FlatteningTypeAdapterFactoryTest {
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();
 
     String json = "{\"a.b\": 1, \"a.c\": true}";
-    assertThrows(
+    assertThrows( // Requirement: 4
         IllegalArgumentException.class,
         () -> {
           gson.fromJson(json, FlatModel1.class);
@@ -52,8 +52,8 @@ public class FlatteningTypeAdapterFactoryTest {
     FlatteningTypeAdapterFactory factory = new FlatteningTypeAdapterFactory();
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();
 
-    String json = "{\"a\":{\"b\":-1}, \"a.b\": 1, \"a.c\": true}";
-    assertThrows(
+    String json = "{\"a\":{\"b\":-1}, \"a.b\": 1, \"a.c\": true}"; 
+    assertThrows( //requirement: 4
         IllegalArgumentException.class,
         () -> {
           gson.fromJson(json, FlatModel1.class);
@@ -74,10 +74,10 @@ public class FlatteningTypeAdapterFactoryTest {
     Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();
 
     String json = "{\"a\": {\"1\": {\"@\": 1.01}, \"2\": \"a.1.@\"}}";
-    FlatModel2 result = gson.fromJson(json, FlatModel2.class);
+    FlatModel2 result = gson.fromJson(json, FlatModel2.class);//Requirement: 1 
 
     // Check the flattened fields
-    assertEquals(1.01, result.a1, 0.0);
+    assertEquals(1.01, result.a1, 0.0);//Requirement: 2
     assertEquals("a.1.@", result.a2);
   }
 
@@ -87,8 +87,8 @@ public class FlatteningTypeAdapterFactoryTest {
     FlatteningTypeAdapterFactory factory = new FlatteningTypeAdapterFactory();
     model.aB = 2147483647;
     model.aC = true;
-    Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();
-    JsonObject json = gson.toJsonTree(model).getAsJsonObject();
+    Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();//Requirement: 1
+    JsonObject json = gson.toJsonTree(model).getAsJsonObject();//Requirement: 3
     assertTrue(json.has("a"));
     JsonObject a = json.getAsJsonObject("a");
     assertTrue(a.has("b"));
@@ -118,9 +118,9 @@ public class FlatteningTypeAdapterFactoryTest {
 
     String json = "{\"a\": 1, \"b\": \"true\", \"c\": {\"d\": \"5\", \"e\": \"test\"}}";
 
-    FlatModel3 result = gson.fromJson(json, FlatModel3.class);
+    FlatModel3 result = gson.fromJson(json, FlatModel3.class);//Requirement: 1
     // Check the flattened fields
-    assertEquals(1, result.a);
+    assertEquals(1, result.a);//Requirement: 2
     assertTrue(result.b);
     assertEquals(5, result.cD);
     assertEquals("test", result.cE);
@@ -148,9 +148,9 @@ public class FlatteningTypeAdapterFactoryTest {
 
     String json = "{\"a\": 1, \"b\": \"true\", \"c\": {\"d\": {\"f\": 5, \"e\": \"test\"}}}";
 
-    FlatModel4 result = gson.fromJson(json, FlatModel4.class);
+    FlatModel4 result = gson.fromJson(json, FlatModel4.class);//Requirement: 1
     // Check the flattened fields
-    assertEquals(1, result.a);
+    assertEquals(1, result.a);//Requirement: 2
     assertTrue(result.b);
     assertEquals(5, result.cDf);
     assertEquals("test", result.cDe);
