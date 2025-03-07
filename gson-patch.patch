@@ -1,0 +1,449 @@
+From cf25580e714892261456028c601f10f715ff1417 Mon Sep 17 00:00:00 2001
+From: Ziyuan Jia <zjia@kth.se>
+Date: Fri, 7 Mar 2025 12:53:31 +0100
+Subject: [PATCH] Squashed commit of the following:
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+commit 50c66278968b10ba055c2164bc31ad9337c5af48
+Author: Erik Diep <ediep@kth.se>
+Date:   Fri Mar 7 11:49:23 2025 +0100
+
+    Added test for nested JSONs
+
+commit 0dabeca23427986e1e9c664995db70e156bdc162
+Author: Ziyuan Jia <zjia@kth.se>
+Date:   Fri Mar 7 11:12:58 2025 +0100
+
+    Clean up test cases import and fixes any warning for #9
+
+commit 3cde16606030e9bcafd5d0c66cfae0c2e32e96e5
+Author: Ziyuan Jia <zjia@kth.se>
+Date:   Fri Mar 7 11:09:40 2025 +0100
+
+    Fix the bug in #11 and added more test cases for #9
+
+commit 9812c9c5c8f2a0d344d9cf451a8ec8edc90b7855
+Merge: 0bfeec3c 0535acf8
+Author: Ziyuan Jia <zjia@kth.se>
+Date:   Fri Mar 7 10:18:30 2025 +0100
+
+    Merge branch 'issue/1' of https://github.com/KTH-DD2480-group23/gson into issue/1
+
+commit 0bfeec3ce09284d5724c488a00b8e5f3de6c2f84
+Author: Ziyuan Jia <zjia@kth.se>
+Date:   Fri Mar 7 10:18:26 2025 +0100
+
+    Implements some test cases, correlates #1 and #9
+
+commit 0535acf82767223d1d2b4e78e2b98425559e9a48
+Author: Oscar <oarbman@kth.se>
+Date:   Fri Mar 7 09:20:20 2025 +0100
+
+    Added some more documentation to the file : FlatteningTypeAdapterFactory.java
+
+commit 828a09a4dbce2afb9e25465bcb23fc3620c6f142
+Author: Oscar <oarbman@kth.se>
+Date:   Thu Mar 6 17:19:13 2025 +0100
+
+    Small fix
+
+commit d6dc0cb0de240abd9469cd18f73b2abb34eb6ac9
+Author: Oscar <oarbman@kth.se>
+Date:   Thu Mar 6 16:54:04 2025 +0100
+
+    Small fix : fixed formatting, small comment change, removed 1 useless if check
+
+commit 44581562da37e85bd15e5f89c3a1b3fd0e996221
+Author: Oscar <oarbman@kth.se>
+Date:   Thu Mar 6 16:43:05 2025 +0100
+
+    Bug Fix for file FlatteningTypeAdapterFactory.java
+
+    I noticed that if we had double nested JSONs code would not go past 1 nesting, now it should work for unlimited nestings i hope :pray:.
+
+commit 20cdd1d026a9a7b39768f80417849db98787c637
+Author: Oscar <oarbman@kth.se>
+Date:   Thu Mar 6 15:05:11 2025 +0100
+
+    Added some documentation to file FlatteningTypeAdapterFactory.java
+
+commit 2544bbeeb26e3f3205da6a7c00c359c1fe34c337
+Author: Oscar <oarbman@kth.se>
+Date:   Thu Mar 6 11:40:56 2025 +0100
+
+    Bug fix: Expected a JsonObject but was JsonPrimitive
+
+    Error Message : An exception occurred while executing the Java class. Expected a com.google.gson.JsonObject but was com.google.gson.JsonPrimitive; at path $.id -> [Help 1]
+
+    If create() in FlatteningTypeAdapterFactory.java is called with a primitive type, we will not create a TypeAdapter, instead we will return null meaning we will send the problem to a deafult Gson create method.
+
+commit 9fdaaa99bdc186eb2d8da99d3cedd8614153a03d
+Author: Lovisa Sjöberg <lovisa.sjoberg02@gmail.com>
+Date:   Wed Mar 5 11:58:14 2025 +0100
+
+    Added logs from before adaptations in the fork, closing issue #7
+
+commit 04d10420444ebddd8e546cd7f75a3953e00427b4
+Author: Oscar <oarbman@kth.se>
+Date:   Tue Mar 4 12:36:04 2025 +0100
+
+    Fixed so the constructor is overloaded
+
+commit 5846c27b25e8b7eb8bec1f06d44deaef53391c44
+Author: Lovisa Sjöberg <lovisa.sjoberg02@gmail.com>
+Date:   Mon Mar 3 17:58:15 2025 +0100
+
+    Finished flagging for issue #5 and added logic relating but not closing issue #6
+
+commit 0195df30ffcbe64727f22ec0f4d6de6d7ee20a12
+Author: Lovisa Sjöberg <lovisa.sjoberg02@gmail.com>
+Date:   Mon Mar 3 11:01:55 2025 +0100
+
+    Succesfully added flags for enableFlattening in Gson.java and GsonBuilder.java
+---
+ .../bind/FlatteningTypeAdapterFactory.java    | 165 ++++++++++++++++++
+ .../FlatteningTypeAdapterFactoryTest.java     | 158 +++++++++++++++++
+ 2 files changed, 323 insertions(+)
+ create mode 100644 gson/src/main/java/com/google/gson/internal/bind/FlatteningTypeAdapterFactory.java
+ create mode 100644 gson/src/test/java/com/google/gson/internal/bind/FlatteningTypeAdapterFactoryTest.java
+
+diff --git a/gson/src/main/java/com/google/gson/internal/bind/FlatteningTypeAdapterFactory.java b/gson/src/main/java/com/google/gson/internal/bind/FlatteningTypeAdapterFactory.java
+new file mode 100644
+index 00000000..43725792
+--- /dev/null
++++ b/gson/src/main/java/com/google/gson/internal/bind/FlatteningTypeAdapterFactory.java
+@@ -0,0 +1,165 @@
++package com.google.gson.internal.bind;
++
++import com.google.gson.Gson;
++import com.google.gson.JsonElement;
++import com.google.gson.JsonObject;
++import com.google.gson.TypeAdapter;
++import com.google.gson.TypeAdapterFactory;
++import com.google.gson.reflect.TypeToken;
++import com.google.gson.stream.JsonReader;
++import com.google.gson.stream.JsonToken;
++import com.google.gson.stream.JsonWriter;
++import java.io.IOException;
++import java.util.Map;
++
++/**
++ * The purpose of this file is to implement a solution to the issue:
++ * https://github.com/google/gson/issues/2555, raised by the user "mpsingh47". Mpsingh47 Wanted to
++ * be able to deserialize a JSON object into a flat model class without using a nested class
++ * structure. Mpsingh47 requested that there should be a feature making it possible to write
++ * "@serialized(address.street)", allowing the nested street value from the address to be directly
++ * mapped to a field in the model. This would make it such that one does not have to create a nested
++ * class to parse JSON into an object.
++ *
++ * <p>Under this issue, user "Marcono1234" responded with a proof of concept; however, he did not
++ * implement such a feature into the gson package. This file is therefore an implementation of user
++ * Marcono1234 proof of concept, accompanied by a new corresponding test file. Testing that this
++ * file works correctly.
++ */
++
++/**
++ * Type adapter that flattens nested JSON objects during deserialization, and expends them back to
++ * their orginal format during serialization.
++ */
++public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
++  // Called by Gson
++  public FlatteningTypeAdapterFactory() {}
++
++  @Override
++  public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
++    //  We first retrive the raw type of param "type" if this is a JsonPrimitive type
++    //  meaning we are not dealing with a JsonObject but instead a JsonPrimitive like a
++    //  int, string, Integer or any other, we will return null, meaning we will send
++    //  the problem to a lower down default gson TypeAdapter create method.
++    Class<? super T> raw = type.getRawType();
++    if (raw.isPrimitive()
++        || String.class.equals(raw)
++        || Number.class.isAssignableFrom(raw)
++        || Boolean.class.equals(raw)
++        || Character.class.equals(raw)) {
++      return null;
++    }
++
++    TypeAdapter<JsonObject> jsonObjectAdapter = gson.getAdapter(JsonObject.class);
++    TypeAdapter<T> delegateAdapter = gson.getDelegateAdapter(this, type);
++
++    return new TypeAdapter<T>() {
++      private final char separator = '.';
++
++      /**
++       * This function recursively flattens a potentially nested JSON object.
++       *
++       * <p>It expands upon Marcono1234 proof of concept by instead of combining once, it will given
++       * multiple nestings it will recusivly call it self on the child nests.
++       *
++       * @param name : is the parent key that wants to be combined with its inner children.
++       * @param toFlatten : the JSON object that contains all the parent keys children.
++       * @param destination : The target JSON object where all flattend keys will be stored into.
++       */
++      private void flattenInto(
++          String name, JsonObject toFlatten, JsonObject destination, boolean isInitial) {
++        for (Map.Entry<String, JsonElement> entry : toFlatten.entrySet()) {
++          String entrykey = entry.getKey();
++          if (entrykey.contains(String.valueOf(separator))) {
++            throw new IllegalArgumentException("Unsupported entry key: " + entrykey);
++          }
++          String flattenedName = name + separator + entrykey;
++          if (isInitial) {
++            flattenedName = entry.getKey();
++          }
++          //  Nested structure
++          if (entry.getValue().isJsonObject()) {
++            flattenInto(flattenedName, entry.getValue().getAsJsonObject(), destination, false);
++          } else {
++            if (destination.has(flattenedName)) {
++              throw new IllegalArgumentException("Duplicate name: " + flattenedName);
++            }
++            destination.add(flattenedName, entry.getValue());
++          }
++        }
++      }
++
++      /**
++       * Given a nested JSON structure it will turn it into a flattend version.
++       *
++       * <p>This function is purely from Marcono1234 proof of concept
++       */
++      @Override
++      public T read(JsonReader in) throws IOException {
++        if (in.peek() == JsonToken.NULL) {
++          in.skipValue();
++          return null;
++        }
++
++        JsonObject jsonObject = jsonObjectAdapter.read(in);
++        JsonObject flattened = new JsonObject();
++
++        flattenInto("", jsonObject, flattened, true);
++        return delegateAdapter.fromJsonTree(flattened);
++      }
++
++      /**
++       * Given a flattend JSON we will turn it into a nested structure
++       *
++       * <p>This function has expands upon Marcono1234 proof of concept, by allowing multiple
++       * nestings to be able to be unflattend instead of the originall code which only worked for a
++       * depth of 1.
++       *
++       * @param out : the JsonWriter that we will write the JSON output to
++       * @param value : value is the object we will unflatten
++       * @throws IOException : java.io.IOException; must be caught or declared to be thrown
++       */
++      @Override
++      public void write(JsonWriter out, T value) throws IOException {
++        if (value == null) {
++          out.nullValue();
++          return;
++        }
++
++        JsonObject flattened = (JsonObject) delegateAdapter.toJsonTree(value);
++        JsonObject expanded = new JsonObject();
++
++        for (Map.Entry<String, JsonElement> entry : flattened.entrySet()) {
++          String name = entry.getKey();
++          JsonElement entryValue = entry.getValue();
++
++          // This basically works like a linked list of linked lists, where our root node / dummy
++          // node is expanded and we create are
++          JsonObject destination = expanded;
++          while (true) {
++            int separatorIndex = name.indexOf(separator);
++            if (separatorIndex == -1) {
++              destination.add(name, entryValue);
++              break;
++            } else {
++              String namePrefix = name.substring(0, separatorIndex);
++              String nameSuffix = name.substring(separatorIndex + 1);
++
++              JsonObject nestedObject;
++              if (destination.has(namePrefix) && destination.get(namePrefix).isJsonObject()) {
++                nestedObject = destination.getAsJsonObject(namePrefix);
++              } else {
++                nestedObject = new JsonObject();
++                destination.add(namePrefix, nestedObject);
++              }
++              destination = nestedObject;
++              name = nameSuffix;
++            }
++          }
++        }
++        // Finally write the expanded JsonObject to the actual writer
++        jsonObjectAdapter.write(out, expanded);
++      }
++    };
++  }
++}
+diff --git a/gson/src/test/java/com/google/gson/internal/bind/FlatteningTypeAdapterFactoryTest.java b/gson/src/test/java/com/google/gson/internal/bind/FlatteningTypeAdapterFactoryTest.java
+new file mode 100644
+index 00000000..59ec29dc
+--- /dev/null
++++ b/gson/src/test/java/com/google/gson/internal/bind/FlatteningTypeAdapterFactoryTest.java
+@@ -0,0 +1,158 @@
++package com.google.gson.internal.bind;
++
++import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.assertThrows;
++import static org.junit.Assert.assertTrue;
++
++import com.google.gson.Gson;
++import com.google.gson.GsonBuilder;
++import com.google.gson.JsonObject;
++import com.google.gson.annotations.SerializedName;
++import org.junit.Test;
++
++public class FlatteningTypeAdapterFactoryTest {
++
++  static class FlatModel1 {
++    @SerializedName("a.b")
++    public int aB;
++
++    @SerializedName("a.c")
++    public boolean aC;
++  }
++
++  @Test
++  public void testFlatteningtoModelClass() {
++
++    FlatteningTypeAdapterFactory factory = new FlatteningTypeAdapterFactory();
++    Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();
++
++    String json = "{\"a\": {\"b\": 1, \"c\": true}}";
++    FlatModel1 result = gson.fromJson(json, FlatModel1.class);
++
++    // Check the flattened fields
++    assertEquals(1, result.aB);
++    assertTrue(result.aC);
++  }
++
++  @Test
++  public void testDottedKeyJsontoModel() {
++    FlatteningTypeAdapterFactory factory = new FlatteningTypeAdapterFactory();
++    Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();
++
++    String json = "{\"a.b\": 1, \"a.c\": true}";
++    assertThrows(
++        IllegalArgumentException.class,
++        () -> {
++          gson.fromJson(json, FlatModel1.class);
++        });
++  }
++
++  @Test
++  public void testConflictMixedWithModelClass() {
++    FlatteningTypeAdapterFactory factory = new FlatteningTypeAdapterFactory();
++    Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();
++
++    String json = "{\"a\":{\"b\":-1}, \"a.b\": 1, \"a.c\": true}";
++    assertThrows(
++        IllegalArgumentException.class,
++        () -> {
++          gson.fromJson(json, FlatModel1.class);
++        });
++  }
++
++  static class FlatModel2 {
++    @SerializedName("a.1.@")
++    public double a1;
++
++    @SerializedName("a.2")
++    public String a2;
++  }
++
++  @Test
++  public void testFlatteningWithSpecialCharacters() {
++    FlatteningTypeAdapterFactory factory = new FlatteningTypeAdapterFactory();
++    Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();
++
++    String json = "{\"a\": {\"1\": {\"@\": 1.01}, \"2\": \"a.1.@\"}}";
++    FlatModel2 result = gson.fromJson(json, FlatModel2.class);
++
++    // Check the flattened fields
++    assertEquals(1.01, result.a1, 0.0);
++    assertEquals("a.1.@", result.a2);
++  }
++
++  @Test
++  public void testUnflattenfromModelClass() {
++    FlatModel1 model = new FlatModel1();
++    FlatteningTypeAdapterFactory factory = new FlatteningTypeAdapterFactory();
++    model.aB = 2147483647;
++    model.aC = true;
++    Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();
++    JsonObject json = gson.toJsonTree(model).getAsJsonObject();
++    assertTrue(json.has("a"));
++    JsonObject a = json.getAsJsonObject("a");
++    assertTrue(a.has("b"));
++    assertEquals(2147483647, a.get("b").getAsInt());
++    assertTrue(a.has("c"));
++    assertTrue(a.get("c").getAsBoolean());
++  }
++
++  static class FlatModel3 {
++    @SerializedName("a")
++    public int a;
++
++    @SerializedName("b")
++    public boolean b;
++
++    @SerializedName("c.d")
++    public int cD;
++
++    @SerializedName("c.e")
++    public String cE;
++  }
++
++  @Test
++  public void testFlatteningTwoNestedWithModelClass() {
++    FlatteningTypeAdapterFactory factory = new FlatteningTypeAdapterFactory();
++    Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();
++
++    String json = "{\"a\": 1, \"b\": \"true\", \"c\": {\"d\": \"5\", \"e\": \"test\"}}";
++
++    FlatModel3 result = gson.fromJson(json, FlatModel3.class);
++    // Check the flattened fields
++    assertEquals(1, result.a);
++    assertTrue(result.b);
++    assertEquals(5, result.cD);
++    assertEquals("test", result.cE);
++  }
++
++  static class FlatModel4 {
++
++    @SerializedName("a")
++    public int a;
++
++    @SerializedName("b")
++    public boolean b;
++
++    @SerializedName("c.d.f")
++    public int cDf;
++
++    @SerializedName("c.d.e")
++    public String cDe;
++  }
++
++  @Test
++  public void testFlatteningThreeNestedWithModelClass() {
++    FlatteningTypeAdapterFactory factory = new FlatteningTypeAdapterFactory();
++    Gson gson = new GsonBuilder().registerTypeAdapterFactory(factory).create();
++
++    String json = "{\"a\": 1, \"b\": \"true\", \"c\": {\"d\": {\"f\": 5, \"e\": \"test\"}}}";
++
++    FlatModel4 result = gson.fromJson(json, FlatModel4.class);
++    // Check the flattened fields
++    assertEquals(1, result.a);
++    assertTrue(result.b);
++    assertEquals(5, result.cDf);
++    assertEquals("test", result.cDe);
++  }
++}
+-- 
+2.45.2
+
