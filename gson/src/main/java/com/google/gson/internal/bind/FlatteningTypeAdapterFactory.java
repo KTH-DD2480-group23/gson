@@ -66,12 +66,19 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
        * @param toFlatten : the JSON object that contains all the parent keys children.
        * @param destination : The target JSON object where all flattend keys will be stored into.
        */
-      private void flattenInto(String name, JsonObject toFlatten, JsonObject destination) {
+      private void flattenInto(String name, JsonObject toFlatten, JsonObject destination, boolean isInitial) {
         for (Map.Entry<String, JsonElement> entry : toFlatten.entrySet()) {
-          String flattenedName = name + separator + entry.getKey();
+          String entrykey = entry.getKey();
+          if(entrykey.contains(String.valueOf(separator))) {
+            throw new IllegalArgumentException("Unsupported entry key: " + entrykey);
+          }
+          String flattenedName = name + separator + entrykey;
+          if (isInitial) {
+            flattenedName = entry.getKey();
+          }
           //  Nested structure
           if (entry.getValue().isJsonObject()) {
-            flattenInto(flattenedName, entry.getValue().getAsJsonObject(), destination);
+            flattenInto(flattenedName, entry.getValue().getAsJsonObject(), destination, false);
           } else {
             if (destination.has(flattenedName)) {
               throw new IllegalArgumentException("Duplicate name: " + flattenedName);
@@ -96,16 +103,7 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
         JsonObject jsonObject = jsonObjectAdapter.read(in);
         JsonObject flattened = new JsonObject();
 
-        for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
-          String name = entry.getKey();
-          JsonElement value = entry.getValue();
-
-          if (value instanceof JsonObject) {
-            flattenInto(name, (JsonObject) value, flattened);
-          } else {
-            flattened.add(name, value);
-          }
-        }
+        flattenInto("", jsonObject, flattened, true);
         return delegateAdapter.fromJsonTree(flattened);
       }
 
