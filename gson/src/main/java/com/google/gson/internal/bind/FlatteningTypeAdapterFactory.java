@@ -23,8 +23,8 @@ import java.util.Map;
  *
  * <p>Under this issue, user "Marcono1234" responded with a proof of concept; however, he did not
  * implement such a feature into the gson package. This file is therefore an implementation of user
- * Marcono1234 proof of concept, accompanied by a new corresponding test file. Ensuring this file
- * works correctly.
+ * Marcono1234 proof of concept, accompanied by a new corresponding test file. Testing that this
+ * file works correctly.
  */
 
 /**
@@ -37,6 +37,10 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
 
   @Override
   public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+    //  We first retrive the raw type of param "type" if this is a JsonPrimitive type
+    //  meaning we are not dealing with a JsonObject but instead a JsonPrimitive like a
+    //  int, string, Integer or any other, we will return null, meaning we will send
+    //  the problem to a lower down default gson TypeAdapter create method.
     Class<? super T> raw = type.getRawType();
     if (raw.isPrimitive()
         || String.class.equals(raw)
@@ -52,6 +56,16 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
     return new TypeAdapter<T>() {
       private final char separator = '.';
 
+      /**
+       * This function recursively flattens a potentially nested JSON object.
+       *
+       * <p>It expands upon Marcono1234 proof of concept by instead of combining once, it will given
+       * multiple nestings it will recusivly call it self on the child nests.
+       *
+       * @param name : is the parent key that wants to be combined with its inner children.
+       * @param toFlatten : the JSON object that contains all the parent keys children.
+       * @param destination : The target JSON object where all flattend keys will be stored into.
+       */
       private void flattenInto(String name, JsonObject toFlatten, JsonObject destination) {
         for (Map.Entry<String, JsonElement> entry : toFlatten.entrySet()) {
           String flattenedName = name + separator + entry.getKey();
@@ -67,30 +81,17 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
         }
       }
 
-      /** !! Own doc Reads Json */
+      /**
+       * Given a nested JSON structure it will turn it into a flattend version.
+       *
+       * <p>This function is purely from Marcono1234 proof of concept
+       */
       @Override
       public T read(JsonReader in) throws IOException {
         if (in.peek() == JsonToken.NULL) {
           in.skipValue();
           return null;
         }
-
-        /*
-         * Flattens nested JsonObject values, e.g.:
-         *   {
-         *     "a": 1,
-         *     "b": {
-         *       "x": true,
-         *       "y": 2
-         *     }
-         *   }
-         * Becomes
-         *   {
-         *     "a": 1,
-         *     "b.x": true,
-         *     "b.y": 2
-         *   }
-         */
 
         JsonObject jsonObject = jsonObjectAdapter.read(in);
         JsonObject flattened = new JsonObject();
@@ -99,28 +100,26 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
           String name = entry.getKey();
           JsonElement value = entry.getValue();
 
-          // Flatten the value
           if (value instanceof JsonObject) {
             flattenInto(name, (JsonObject) value, flattened);
           } else {
             flattened.add(name, value);
           }
-
-          // But also add the non-flattened value in case this entry should not actually be
-          // flattened
-          // The delegate adapter will then ignore either the flattened or the non-flattened entries
-          //   if (flattened.has(name)) {
-          //     throw new IllegalArgumentException("Duplicate name: " + name + " and " +
-          // flattened);
-          //   }
-          //   flattened.add(name, value);
         }
-
-        System.out.println("flattened " + flattened);
-        // Now read the flattened JsonObject using the delegate adapter
         return delegateAdapter.fromJsonTree(flattened);
       }
 
+      /**
+       * Given a flattend JSON we will turn it into a nested structure
+       *
+       * <p>This function has expands upon Marcono1234 proof of concept, by allowing multiple
+       * nestings to be able to be unflattend instead of the originall code which only worked for a
+       * depth of 1.
+       *
+       * @param out : the JsonWriter that we will write the JSON output to
+       * @param value : value is the object we will unflatten
+       * @throws IOException : java.io.IOException; must be caught or declared to be thrown
+       */
       @Override
       public void write(JsonWriter out, T value) throws IOException {
         if (value == null) {
@@ -128,26 +127,8 @@ public class FlatteningTypeAdapterFactory implements TypeAdapterFactory {
           return;
         }
 
-        /*
-         * Expands the flattened JsonObject, e.g.:
-         *   {
-         *     "a": 1,
-         *     "b.x": true,
-         *     "b.y": 2
-         *   }
-         * Becomes
-         *   {
-         *     "a": 1,
-         *     "b": {
-         *       "x": true,
-         *       "y": 2
-         *     }
-         *   }
-         */
-
         JsonObject flattened = (JsonObject) delegateAdapter.toJsonTree(value);
         JsonObject expanded = new JsonObject();
-        // Map<String, JsonElement> expandedAsMap = expanded.asMap();
 
         for (Map.Entry<String, JsonElement> entry : flattened.entrySet()) {
           String name = entry.getKey();
